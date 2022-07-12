@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RabbitMQ.Client;
-using Task.Models;
+using TaskAPI.Models;
 
-namespace Task.Controllers
+namespace TaskAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -21,18 +21,23 @@ namespace Task.Controllers
         public TaskModelsController(TaskModelContext context)
         {
             _context = context;
-            var TaskModelList = new List<TaskModel> {
-                new TaskModel
-                {
-                    TaskID = 1,
-                    TaskDescription = "Develop New GUI",
-                    TaskPriority = "Low",
-                    TaskStatus = "STARTED",
-                    CustomerID = 1
-                }
-            };
-            _context.AddRange(TaskModelList);
-            _context.SaveChanges();
+            //if(_context.TaskItems.Count() == 0)
+            //{
+            //    var TaskModelList = new List<TaskModel> {
+            //    new TaskModel
+            //    {
+            //        TaskID = 1,
+            //        TaskDescription = "Develop New GUI",
+            //        TaskPriority = "Low",
+            //        TaskStatus = "STARTED",
+            //        CustomerID = 1
+            //    }
+            //};
+            //    _context.AddRange(TaskModelList);
+            //    _context.SaveChanges();
+            //}
+            
+            
         }
 
         // GET: api/TaskModels

@@ -11,9 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Task.Models;
+using TaskAPI.Models;
 
-namespace Task
+namespace TaskAPI
 {
     public class Startup
     {
@@ -32,6 +32,7 @@ namespace Task
                 builder.WithOrigins("http://localhost:5000").AllowAnyMethod().AllowAnyHeader();
             }));
             services.AddControllers();
+            services.AddHostedService<TaskConsumeAPI>();
             services.AddDbContext<TaskModelContext>(opt =>
             opt.UseInMemoryDatabase("TaskItems"));
             services.AddSwaggerGen(c =>
